@@ -1,20 +1,41 @@
 const form = document.getElementById('submit_form')
 
+let object = {
+    entry: "",
+    comments: [],
+    reactions: {
+        smiley: 0,
+        sad: 0,
+        like: 0,
+    },
+    gif: ""
+};
+
+const addGif = document.getElementById("addGif")
+addGif.addEventListener('click', async (e) => {
+    e.preventDefault()
+    const gifData = await fetch("https://api.giphy.com/v1/gifs/search?api_key=0S3uHG2JHXGiL6ooiPgmsyrS25ufBlGf&q=dog&limit=6&offset=0&rating=g&lang=en")
+    const gifJson = await gifData.json();
+    console.log(gifJson)
+
+    // gifJson.data.forEach(img => {
+    //     console.log('lots of images', img.images.original.url)
+    // })
+
+    object.gif = gifJson.data[0].images.original.url
+
+})
+
 form.addEventListener('submit', (e) => {
     e.preventDefault()
     // const postText = document.getElementById('postText').value
     console.log("postText test", e.target.postText)
     
-    const object = {
-        entry: e.target.postText.value,
-        comments: [],
-        reactions: {
-            smiley: 0,
-            sad: 0,
-            like: 0,
-        },
-        gif: ""
-    };
+    const postGif = document.getElementById('addGif')
+
+    object.entry = e.target.postText.value,
+    
+
 
     fetch("http://localhost:3000/entries/", {
         method: "POST",
@@ -25,6 +46,8 @@ form.addEventListener('submit', (e) => {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
+
+    window.location.href=window.location.href
 })
 
 const section = document.getElementById('entries')
@@ -152,9 +175,6 @@ async function fetchData(){
             commentForm_submit.type = "submit"
             commentForm_submit.value = "Submit reply"
             commentForm.append(commentForm_submit)
-        
-
-        div.append(reply)
 
         })
         div.append(revealButton)
