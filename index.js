@@ -68,6 +68,11 @@ async function fetchData(){
         p.className = "p_entry"
         p.textContent = i.entry
         div.appendChild(p);
+        
+        let img = document.createElement('img')
+        img.src = i.gif
+        img.style.width = "10em"
+        div.appendChild(img)
 
         let reaction_smile = document.createElement('button')
         // reaction_smile.id = `smile${i.id}`
