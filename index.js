@@ -121,6 +121,7 @@ async function fetchData(){
                 p.textContent = comment
                 div.append(p)
             })
+            revealButton.style.display = "none"
         })
         div.append(revealButton)
 
