@@ -102,8 +102,33 @@ async function fetchData(){
         })
         div.appendChild(reaction_like)
 
+        // ############################ REVEAL REPLIES ########################################
+
+        let revealButton = document.createElement('button')
+        revealButton.id = `reveal${i.id}`
+        revealButton.textContent = `Show ${i.comments.length} Comments`
+        revealButton.addEventListener('click', async () =>{
+            const comments = await fetch(`http://localhost:3000/entries/${i.id}`)
+            console.log("comments", comments);
+            const commentsJSON = await comments.json();
+            console.log("commentsJSON", commentsJSON);
+            console.log("commentsJSON.comments", commentsJSON[0].comments)
+            commentsJSON[0].comments.forEach(comment => {
+                console.log(comment)
+                
+                let p = document.createElement('p')
+                p.className= "test test"
+                p.textContent = comment
+                div.append(p)
+            })
+        })
+        div.append(revealButton)
+
+
+        // ############################ REPLY BUTTON ########################################
+
         let reply = document.createElement('button')
-        reply.textContent= `Reply (Number of replies ${i.comments.length})`
+        reply.textContent= `Reply`
 
         reply.addEventListener('click', async () => {
             let commentForm = document.createElement('form')
