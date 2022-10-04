@@ -122,16 +122,10 @@ async function fetchData(){
                 div.append(p)
             })
             revealButton.style.display = "none"
-        })
-        div.append(revealButton)
 
+            // let reply = document.createElement('button')
+            // reply.textContent= `Reply`
 
-        // ############################ REPLY BUTTON ########################################
-
-        let reply = document.createElement('button')
-        reply.textContent= `Reply`
-
-        reply.addEventListener('click', async () => {
             let commentForm = document.createElement('form')
             commentForm.className = "commentForm"
             commentForm.addEventListener('submit', async (e) => {
@@ -158,10 +152,12 @@ async function fetchData(){
             commentForm_submit.type = "submit"
             commentForm_submit.value = "Submit reply"
             commentForm.append(commentForm_submit)
-        })
+        
 
         div.append(reply)
 
+        })
+        div.append(revealButton)
 
     });
 }
