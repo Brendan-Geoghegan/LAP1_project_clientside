@@ -10,6 +10,7 @@ let object = {
 };
 
 const gifForm = document.getElementById('gif_form')
+const gifNotif = document.getElementById('gifNotification')
 gifForm.addEventListener('submit', async (e) =>{
     e.preventDefault()
     console.log('gif input test')
@@ -21,25 +22,11 @@ gifForm.addEventListener('submit', async (e) =>{
     
 
     object.gif = gifJson.data[(Math.floor(Math.random()*20))].images.original.url
+
+    gifForm.style.display = "none"
+    gifNotif.style.display = "block"
+
 })
-
-// const addGif = document.getElementById("addGif")
-// addGif.addEventListener('click', async (e) => {
-//     e.preventDefault()
-//     const gifSearch = document.getElementById('gifInput')
-//     const gifResult = gifSearch.textContent
-//     console.log(gifResult)
-//     const gifData = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=0S3uHG2JHXGiL6ooiPgmsyrS25ufBlGf&q=${gifResult}&limit=6&offset=0&rating=g&lang=en`)
-//     const gifJson = await gifData.json();
-//     console.log(gifJson)
-    
-//     // gifJson.data.forEach(img => {
-//     //     console.log('lots of images', img.images.original.url)
-//     // })
-
-//     object.gif = gifJson.data[0].images.original.url
-
-// })
 
 const form = document.getElementById('submit_form')
 
