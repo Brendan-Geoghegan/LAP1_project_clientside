@@ -183,10 +183,19 @@ async function fetchData(){
             })
             div.append(commentForm)
 
-            let commentForm_input = document.createElement('input')
-            commentForm_input.type = "text"
+            let commentForm_input = document.createElement('textarea')
             commentForm_input.id = "postReply"
+            commentForm_input.name = "postReply"
+            commentForm_input.rows = "4"
+            commentForm_input.cols = "40"
+            commentForm_input.maxLength = "40"
+            commentForm_input.required = true;
             commentForm.append(commentForm_input)
+
+            // let commentForm_input = document.createElement('input')
+            // commentForm_input.type = "text"
+            // commentForm_input.id = "postReply"
+            // commentForm.append(commentForm_input)
 
             let commentForm_submit = document.createElement('input')
             commentForm_submit.type = "submit"
