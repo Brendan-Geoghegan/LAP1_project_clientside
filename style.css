@@ -78,7 +78,7 @@ html, body{
     min-width: 0;
     margin: 0;
     height: 100%;
-    background-color: #1c1d1d;;
+    background-color: rgb(37, 39, 39);;
 }
 
 main{
@@ -126,27 +126,14 @@ footer{
     margin: auto;
 }
 
-#gifInput{
-    width: 50%;
-    height: 30px;
-    border-radius: 50px;
-    background-color: #2f3031;
-    padding-left: 8px;
-    cursor: pointer;
-    color: white;
-}
-
-#gifInput::placeholder{
-    color: rgba(255, 255, 255, 0.575);
-}
-
 #sendPost{
-    position: absolute;
-    right: 235px;
-    bottom: 60px;
+margin-top: -13px;
 }
 
-
+#submit_form{
+    display: flex;
+    flex-direction: column;
+}
 .sendButton{
     text-align: center;
     cursor: pointer;
@@ -169,7 +156,7 @@ footer{
     padding: 5px 10px;
     color: #fff;
     background-color: #1ED760;
-    height: 26px;
+    height: 31px;
 
 }
 
@@ -214,6 +201,17 @@ p{
     font-family: sans-serif;
 }
 
+@keyframes append-animate {
+	from {
+		transform: scale(0);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;	
+	}
+}
+
 .comment{
     margin-left: 30px ;
     margin-top: 5px;
@@ -222,7 +220,11 @@ p{
     box-shadow: black;
     display: list-item;
     background-color: #544f4f;
+    transition: .6s;
+    animation: append-animate .3s linear;
 }
+
+
 
 .commentForm{
     padding: 10px 25px 10px;
@@ -232,7 +234,6 @@ p{
 
 #postText2{
     border-radius: 500px;
-    margin-bottom: 15px;
     padding-left: 25px;
     padding-right: 25px;
     padding-top: 5px;
@@ -248,6 +249,8 @@ p{
     background-color: #544f4f;
     padding-left: 8px;
     cursor: pointer;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 #postReply::placeholder{
@@ -257,6 +260,7 @@ p{
 /* ############Random gif added color############# */
 
 #gifNotification{
+    margin-top: 10px;
     color: white;
 }
 
@@ -347,3 +351,34 @@ p{
   img{
     border-radius: 5px;
   }
+
+
+#gif_form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#gifInput{
+    width: 98%;
+    height: 30px;
+    border-radius: 50px;
+    background-color: #2f3031;
+    padding-left: 8px;
+    cursor: pointer;
+    color: white;
+    margin-top: 10px;
+    
+}
+
+#gifInput::placeholder{
+    color: rgba(255, 255, 255, 0.575);
+}
+
+#addGif{
+    margin-top: -33px;
+    margin-right: 5px;
+    
+}
