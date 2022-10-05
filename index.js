@@ -30,7 +30,7 @@ gifForm.addEventListener('submit', async (e) =>{
 
 const form = document.getElementById('submit_form')
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
     e.preventDefault()
     // const postText = document.getElementById('postText').value
     console.log("postText test", e.target.postText2)
@@ -41,7 +41,7 @@ form.addEventListener('submit', (e) => {
     
 
 
-    fetch("http://localhost:3000/entries/", {
+    await fetch("https://team-name404.herokuapp.com/entries/", {
         method: "POST",
 
         body: JSON.stringify(object),
@@ -58,7 +58,7 @@ const section = document.getElementById('entries')
 console.log(section)
 
 async function fetchData(){
-    const rawData = await fetch("http://localhost:3000/entries/")
+    const rawData = await fetch("https://team-name404.herokuapp.com/entries/")
     const commentData = await rawData.json()
     console.log(commentData, "from fetch data function")
 
@@ -91,8 +91,8 @@ async function fetchData(){
         reaction_smile.setAttribute("id", `smile${i.id}`)
         reaction_smile.textContent = `😀 ${i.reactions.smiley}`
         reaction_smile.addEventListener('click', async () => {
-            console.log(`http://localhost:3000/entries/${i.id}/reaction`)
-            await fetch(`http://localhost:3000/entries/${i.id}/reaction`, {
+            console.log(`https://team-name404.herokuapp.com/entries/${i.id}/reaction`)
+            await fetch(`https://team-name404.herokuapp.com/entries/${i.id}/reaction`, {
             method: "PATCH",
 
             body: JSON.stringify({reaction: "smiley"}),
@@ -110,8 +110,8 @@ async function fetchData(){
         reaction_sad.id = `sad${i.id}`
         reaction_sad.textContent = `😢 ${i.reactions.sad}`
         reaction_sad.addEventListener('click', async () => {
-            console.log(`http://localhost:3000/entries/${i.id}/reaction`)
-            await fetch(`http://localhost:3000/entries/${i.id}/reaction`, {
+            console.log(`https://team-name404.herokuapp.com/entries/${i.id}/reaction`)
+            await fetch(`https://team-name404.herokuapp.com/entries/${i.id}/reaction`, {
             method: "PATCH",
 
             body: JSON.stringify({reaction: "sad"}),
@@ -128,8 +128,8 @@ async function fetchData(){
         reaction_like.id = `like${i.id}`
         reaction_like.textContent = `👍 ${i.reactions.like}`
         reaction_like.addEventListener('click', async () => {
-            console.log(`http://localhost:3000/entries/${i.id}/reaction`)
-            await fetch(`http://localhost:3000/entries/${i.id}/reaction`, {
+            console.log(`https://team-name404.herokuapp.com/entries/${i.id}/reaction`)
+            await fetch(`https://team-name404.herokuapp.com/entries/${i.id}/reaction`, {
             method: "PATCH",
 
             body: JSON.stringify({reaction: "like"}),
@@ -151,7 +151,7 @@ async function fetchData(){
         revealButton.id = `reveal${i.id}`
         revealButton.textContent = `Show ${i.comments.length} Comments`
         revealButton.addEventListener('click', async () =>{
-            const comments = await fetch(`http://localhost:3000/entries/${i.id}`)
+            const comments = await fetch(`https://team-name404.herokuapp.com/entries/${i.id}`)
             console.log("comments", comments);
             const commentsJSON = await comments.json();
             console.log("commentsJSON", commentsJSON);
@@ -173,7 +173,7 @@ async function fetchData(){
             commentForm.className = "commentForm"
             commentForm.addEventListener('submit', async (e) => {
                 console.log("testing eTarget", e.target.postReply.value)
-                await fetch(`http://localhost:3000/entries/${i.id}/comments`, {
+                await fetch(`https://team-name404.herokuapp.com/entries/${i.id}/comments`, {
                     method: "PATCH",
 
                     body: JSON.stringify({comment: e.target.postReply.value}),
@@ -230,7 +230,7 @@ fetchData()
 
 //     console.log('testing smile')
 
-//     fetch(`http://localhost:3000/entries/1`, {
+//     fetch(`https://team-name404.herokuapp.com/entries/1`, {
 //         method: "PATCH",
 
 //         body: JSON.stringify(
@@ -246,7 +246,7 @@ fetchData()
 
 // const functionIncrement = async () => {
 //     console.log('testing increment')
-//     fetch(`http://localhost:3000/entries`, {
+//     fetch(`https://team-name404.herokuapp.com/entries`, {
 //         method: "PATCH",
 
 //         body: JSON.stringify(
