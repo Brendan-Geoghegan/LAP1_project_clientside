@@ -10,28 +10,43 @@
 </head>
 <body>
     <header>
-        <h1>Team name 404</h1>
+        <div class="container">
+            <div class="stack">
+                <span style="--index: 0;">Team_Name_404</span>
+                <span style="--index: 1;">Team_Name_404</span>
+                <span style="--index: 2;">Team_Name_404</span>
+            </div>
+        </div>
     </header>
 
-    <body>
+    <main>
         <section id="entries">
 
         </section>
+    </main>
 
-        <section class="form">
+    <footer>
+         <section class="form">
+
             <form id="submit_form">
+
                 <!-- <input type="text" id="postText"> -->
 
                 <textarea id="postText2" name="postText2" rows="5" cols="60" required maxlength = "140"></textarea>
 
                 <button id="addGif">Add Gif</button>
+
                 <input type="submit" value="Send">
             </form>
-        </section>
-    </body>
 
-    <footer>
-        
+            <form id="gif_form">
+                <input id="gifInput" type="text" placeholder="Search Giphy...">
+                <input type="submit" value="Add Random Gif" id="addGif">
+            </form>
+
+            <p id="gifNotification">Random Gif Added!</p>
+
+        </section>
     </footer>
 
 </body>

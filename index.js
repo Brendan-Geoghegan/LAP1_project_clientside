@@ -1,5 +1,3 @@
-const form = document.getElementById('submit_form')
-
 let object = {
     entry: "",
     comments: [],
@@ -11,20 +9,26 @@ let object = {
     gif: ""
 };
 
-const addGif = document.getElementById("addGif")
-addGif.addEventListener('click', async (e) => {
+const gifForm = document.getElementById('gif_form')
+const gifNotif = document.getElementById('gifNotification')
+gifForm.addEventListener('submit', async (e) =>{
     e.preventDefault()
-    const gifData = await fetch("https://api.giphy.com/v1/gifs/search?api_key=0S3uHG2JHXGiL6ooiPgmsyrS25ufBlGf&q=dog&limit=6&offset=0&rating=g&lang=en")
+    console.log('gif input test')
+    console.log(e.target.gifInput.value)
+    const gifResult = e.target.gifInput.value
+    const gifData = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=0S3uHG2JHXGiL6ooiPgmsyrS25ufBlGf&q=${gifResult}&limit=20&offset=0&rating=g&lang=en`)
     const gifJson = await gifData.json();
     console.log(gifJson)
+    
 
-    // gifJson.data.forEach(img => {
-    //     console.log('lots of images', img.images.original.url)
-    // })
+    object.gif = gifJson.data[(Math.floor(Math.random()*20))].images.original.url
 
-    object.gif = gifJson.data[0].images.original.url
+    gifForm.style.display = "none"
+    gifNotif.style.display = "block"
 
 })
+
+const form = document.getElementById('submit_form')
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
