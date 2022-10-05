@@ -54,7 +54,20 @@ form.addEventListener('submit', async (e) => {
         }
     })
 
-    window.location.href=window.location.href
+    e.target.postText2.value = "";
+    section.innerHTML = "";
+    fetchData();
+    // scrollTo({
+    //     "scroll-height": 10000000000000,
+    //     behavior: "smooth"
+    // })
+    // const scrollToBottom = () => {
+    //     const element = document.querySelector("body");
+    //     element.scrollBottom = element.scrollHeight;
+    // }
+    // scrollToBottom();
+    
+    // scrollTo(0, document.html.scrollHeight);
 })
 
 const section = document.getElementById('entries')
@@ -200,7 +213,8 @@ async function fetchData(){
                 console.log(newCommentsArray[newCommentsArray.length-1]);
                 const newComment = document.createElement("p");
                 newComment.textContent = newCommentsArray[newCommentsArray.length-1];
-                div.appendChild(newComment);
+                newComment.className = "comment";
+                commentBox.appendChild(newComment);
 
             })
             div.append(commentForm)
