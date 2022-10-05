@@ -1,3 +1,5 @@
+const httpLink = "http://localhost:3000/entries/"
+
 let object = {
     entry: "",
     comments: [],
@@ -42,7 +44,7 @@ form.addEventListener('submit', async (e) => {
     
 
 
-    await fetch("https://team-name404.herokuapp.com/entries/", {
+    await fetch(`${httpLink}`, {
         method: "POST",
 
         body: JSON.stringify(object),
@@ -59,7 +61,7 @@ const section = document.getElementById('entries')
 console.log(section)
 
 async function fetchData(){
-    const rawData = await fetch("https://team-name404.herokuapp.com/entries/")
+    const rawData = await fetch(`${httpLink}`)
     const commentData = await rawData.json()
     console.log(commentData, "from fetch data function")
 
@@ -92,8 +94,8 @@ async function fetchData(){
         reaction_smile.setAttribute("id", `smile${i.id}`)
         reaction_smile.textContent = `😀 ${i.reactions.smiley}`
         reaction_smile.addEventListener('click', async () => {
-            console.log(`https://team-name404.herokuapp.com/entries/${i.id}/reaction`)
-            await fetch(`https://team-name404.herokuapp.com/entries/${i.id}/reaction`, {
+            console.log(`${httpLink}${i.id}/reaction`)
+            await fetch(`${httpLink}${i.id}/reaction`, {
             method: "PATCH",
 
             body: JSON.stringify({reaction: "smiley"}),
@@ -102,7 +104,10 @@ async function fetchData(){
                 "Content-type": "application/json; charset=UTF-8"
                 }
             })
-            window.location.href=window.location.href
+            const rawSmileyData = await fetch(`${httpLink}count/${i.id}/smiley`);
+            const smileyData = await rawSmileyData.json();
+            console.log(smileyData);
+            reaction_smile.textContent = `😀 ${smileyData}`;
             // Page.MaintainScrollPositionOnPostBack = True
         })
         divButtons.appendChild(reaction_smile)
@@ -111,8 +116,8 @@ async function fetchData(){
         reaction_sad.id = `sad${i.id}`
         reaction_sad.textContent = `😢 ${i.reactions.sad}`
         reaction_sad.addEventListener('click', async () => {
-            console.log(`https://team-name404.herokuapp.com/entries/${i.id}/reaction`)
-            await fetch(`https://team-name404.herokuapp.com/entries/${i.id}/reaction`, {
+            console.log(`${httpLink}${i.id}/reaction`)
+            await fetch(`${httpLink}${i.id}/reaction`, {
             method: "PATCH",
 
             body: JSON.stringify({reaction: "sad"}),
@@ -129,8 +134,8 @@ async function fetchData(){
         reaction_like.id = `like${i.id}`
         reaction_like.textContent = `👍 ${i.reactions.like}`
         reaction_like.addEventListener('click', async () => {
-            console.log(`https://team-name404.herokuapp.com/entries/${i.id}/reaction`)
-            await fetch(`https://team-name404.herokuapp.com/entries/${i.id}/reaction`, {
+            console.log(`${httpLink}${i.id}/reaction`)
+            await fetch(`${httpLink}${i.id}/reaction`, {
             method: "PATCH",
 
             body: JSON.stringify({reaction: "like"}),
@@ -152,7 +157,7 @@ async function fetchData(){
         revealButton.id = `reveal${i.id}`
         revealButton.textContent = `Show ${i.comments.length} Comments`
         revealButton.addEventListener('click', async () =>{
-            const comments = await fetch(`https://team-name404.herokuapp.com/entries/${i.id}`)
+            const comments = await fetch(`${httpLink}${i.id}`)
             console.log("comments", comments);
             const commentsJSON = await comments.json();
             console.log("commentsJSON", commentsJSON);
@@ -176,8 +181,9 @@ async function fetchData(){
             let commentForm = document.createElement('form')
             commentForm.className = "commentForm"
             commentForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
                 console.log("testing eTarget", e.target.postReply.value)
-                await fetch(`https://team-name404.herokuapp.com/entries/${i.id}/comments`, {
+                await fetch(`${httpLink}${i.id}/comments`, {
                     method: "PATCH",
 
                     body: JSON.stringify({comment: e.target.postReply.value}),
@@ -187,6 +193,15 @@ async function fetchData(){
                         }
             
                 })
+                e.target.postReply.value = "";
+                const commentsRaw = await fetch(`${httpLink}${i.id}/comments`);
+                const newCommentsArray = await commentsRaw.json();
+                console.log(newCommentsArray);
+                console.log(newCommentsArray[newCommentsArray.length-1]);
+                const newComment = document.createElement("p");
+                newComment.textContent = newCommentsArray[newCommentsArray.length-1];
+                div.appendChild(newComment);
+
             })
             div.append(commentForm)
 
@@ -234,7 +249,7 @@ fetchData()
 
 //     console.log('testing smile')
 
-//     fetch(`https://team-name404.herokuapp.com/entries/1`, {
+//     fetch(`${httpLink}1`, {
 //         method: "PATCH",
 
 //         body: JSON.stringify(
