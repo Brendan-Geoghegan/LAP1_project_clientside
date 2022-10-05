@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Noto+Sans+Mono:wght@300&display=swap');
+
+
 /* ################ TITLE STYLING ################## */
 
 .container {
@@ -5,6 +8,7 @@
     font-size: 1.5rem;
     display: flex;
     flex-direction: column;
+    font-family: 'Noto Sans Mono', monospace;
   }
   
   .right {
@@ -16,7 +20,7 @@
     display: grid;
     grid-template-columns: 1fr;
   }
-  
+
   .stack span {
     font-weight: bold;
     grid-row-start: 1;
@@ -73,10 +77,12 @@
 html, body{
     margin: 0;
     height: 100%;
+    background-color: #544f4f;;
 }
 
 main{
     padding: 0.5em;
+    padding-bottom: 180px;
 }
 
 header{
@@ -99,10 +105,12 @@ textarea {
 
 footer{
     display: inline-block;
+    position: fixed;
     bottom: 0;
     left: 0;
     background-color: #161616;
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     width: 100%;
     text-align: center;
 }
@@ -120,24 +128,43 @@ footer{
 }
 
 #sendPost{
-    position: relative;
-    right: 50px;
-    bottom: 10px;
+    position: absolute;
+    right: 235px;
+    bottom: 60px;
 }
 
-/* #submit_form, #gif_Form{
-    width: 80%;
-} */
 
 .sendButton{
     text-align: center;
     cursor: pointer;
     margin: 1px auto;
-    border: 0;
-    border-radius: 6px ;
-    padding: 0.5em;
-    background-color: rgb(90, 235, 235);
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    border-radius: 500px;
+    transition-property: background-color,border-color,color,box-shadow,filter;
+    transition-duration: .3s;
+    border: 1px solid transparent;
+    letter-spacing: 2px;
+    min-width: 50px;
+    text-transform: uppercase;
+    white-space: normal;
+    font-weight: 700;
+    text-align: center;
+    padding: 5px 10px;
+    color: #fff;
+    background-color: #1ED760;
+    height: 26px;
+
 }
+
+.sendButton:hover{
+    transform: scale(1.04);
+    background-color: #21e065;
+}
+
 
 #gifNotification{
     color: white;
@@ -146,9 +173,9 @@ footer{
 .div_post{
     display: flex;
     padding: 5px;
-    margin: 5px;
-    border: #161616 solid;
+    margin: 10px;
     flex-direction: column;
+    background-color: white;
 }
 
 .div_TextAndImage{
@@ -170,9 +197,31 @@ button{
 }
 
 button:hover{
-    border: #161616 1px solid;
+    color: blue;
 }
 
 p{
     font-family: sans-serif;
 }
+
+.comment{
+    margin-left: 30px ;
+    margin-top: 2px;
+    padding: 5px;
+    box-shadow: black;
+    display: list-item;
+}
+
+.commentForm{
+    padding: 10px 25px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#postText2{
+    border-radius: 500px;
+    margin-bottom: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+

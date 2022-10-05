@@ -142,6 +142,9 @@ async function fetchData(){
         })
         divButtons.appendChild(reaction_like)
 
+        let line = document.createElement('hr')
+        div.appendChild(line)
+
         // ############################ REVEAL REPLIES ########################################
 
         let revealButton = document.createElement('button')
@@ -157,7 +160,7 @@ async function fetchData(){
                 console.log(comment)
                 
                 let p = document.createElement('p')
-                p.className= "test test"
+                p.className= "comment"
                 p.textContent = comment
                 div.append(p)
             })
@@ -190,6 +193,7 @@ async function fetchData(){
             commentForm_input.cols = "40"
             commentForm_input.maxLength = "40"
             commentForm_input.required = true;
+            commentForm_input.placeholder = "  Submit a comment here..."
             commentForm.append(commentForm_input)
 
             // let commentForm_input = document.createElement('input')
