@@ -77,7 +77,7 @@
 html, body{
     margin: 0;
     height: 100%;
-    background-color: #544f4f;;
+    background-color: #2f3031;;
 }
 
 main{
@@ -86,21 +86,20 @@ main{
 }
 
 header{
-    background-color: #161616;
+    background-color: #000000;
     color: white;
     text-align: center;
     padding: 15px;
 }
 textarea {
     resize: none;
-    background-color: #544f4f;
+    background-color: #2f3031;
     border: #313131;
-    color: white;
+    color: #dfdfdf;
 }
 
 #gifNotification{
     display: none;
-
 }
 
 footer{
@@ -111,7 +110,9 @@ footer{
     background-color: #161616;
     padding-top: 20px;
     padding-bottom: 20px;
+    padding-right: 20px;
     width: 100%;
+    min-width: 100%;
     text-align: center;
 }
 
@@ -125,6 +126,15 @@ footer{
 #gifInput{
     width: 50%;
     height: 30px;
+    border-radius: 50px;
+    background-color: #2f3031;
+    padding-left: 8px;
+    cursor: pointer;
+    color: white;
+}
+
+#gifInput::placeholder{
+    color: rgba(255, 255, 255, 0.575);
 }
 
 #sendPost{
@@ -163,11 +173,6 @@ footer{
 .sendButton:hover{
     transform: scale(1.04);
     background-color: #21e065;
-}
-
-
-#gifNotification{
-    color: white;
 }
 
 .div_post{
@@ -223,5 +228,27 @@ p{
     margin-bottom: 15px;
     padding-left: 25px;
     padding-right: 25px;
+    padding-top: 5px;
+    cursor: pointer;
 }
 
+#postText2::placeholder{
+    color: rgba(255, 255, 255, 0.575);
+}
+
+#postReply{
+    border-radius: 50px;
+    background-color: #544f4f;
+    padding-left: 8px;
+    cursor: pointer;
+}
+
+#postReply::placeholder{
+    color: rgba(255, 255, 255, 0.575);
+}
+
+#gifNotification{
+    color: white;
+}
+
+  

@@ -203,6 +203,7 @@ async function fetchData(){
 
             let commentForm_submit = document.createElement('input')
             commentForm_submit.type = "submit"
+            commentForm_submit.className = "sendButton"
             commentForm_submit.value = "Submit reply"
             commentForm.append(commentForm_submit)
 
