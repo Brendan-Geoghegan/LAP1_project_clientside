@@ -81,9 +81,12 @@ header{
     text-align: center;
     padding: 15px;
 }
+textarea {
+    resize: none;}
 
 #gifNotification{
     display: none;
+
 }
 
 footer{
