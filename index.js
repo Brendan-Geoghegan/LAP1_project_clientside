@@ -29,11 +29,11 @@ addGif.addEventListener('click', async (e) => {
 form.addEventListener('submit', (e) => {
     e.preventDefault()
     // const postText = document.getElementById('postText').value
-    console.log("postText test", e.target.postText)
+    console.log("postText test", e.target.postText2)
     
     const postGif = document.getElementById('addGif')
 
-    object.entry = e.target.postText.value,
+    object.entry = e.target.postText2.value,
     
 
 
