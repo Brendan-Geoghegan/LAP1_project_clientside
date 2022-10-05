@@ -160,7 +160,7 @@ async function fetchData(){
             let commentBox = document.createElement('div')
                 commentBox.className = "commentBox"
                 div.append(commentBox)
-                
+
             commentsJSON[0].comments.forEach(comment => {
                 console.log(comment)
                 let p = document.createElement('p')
@@ -262,3 +262,17 @@ fetchData()
 //         }
 //     })
 // }
+
+let sunIcon = document.getElementById('sunIcon')
+let styleLink =  document.getElementById('styleLink')
+let moonIcon = document.getElementById('moonIcon')
+
+sunIcon.addEventListener('click', () =>{
+    console.log('I am working')
+    styleLink.setAttribute('href', "style_light.css")
+})
+
+moonIcon.addEventListener('click', () =>{
+    console.log('I am working')
+    styleLink.setAttribute('href', "style_dark.css")
+})

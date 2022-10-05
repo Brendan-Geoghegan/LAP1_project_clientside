@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_dark.css" id="styleLink">
     <script defer src="index.js"></script>
     <title>Team_Name_404</title>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <link rel="icon"  href="images/favicon.ico"/>
+    <link rel="icon" type="image/png" href="/favicon.png"/>
 </head>
 <body>
     <header>
@@ -18,9 +21,14 @@
                 <span style="--index: 2;">Team_Name_404</span>
             </div>
         </div>
-
-        <div class="icon">
-            <i class="uil uil-sun sun"></i>
+        
+        <div class="circle-wrapper">
+            <div class="icon circle" id="sun">
+                <i class="uil uil-sun sun changePage" id="sunIcon"></i>
+            </div>
+        </div>
+        <div class="icon" id="moon">
+            <i class="uil uil-moon changePage" id="moonIcon"></i>
         </div>
 
     </header>

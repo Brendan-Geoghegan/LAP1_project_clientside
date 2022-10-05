@@ -81,7 +81,7 @@ html, body{
     min-width: 0;
     margin: 0;
     height: 100%;
-    background-color: rgb(172, 168, 168);;
+    background-color: white;;
 }
 
 main{
@@ -90,14 +90,15 @@ main{
 }
 
 header{
-    background-color: #161616;
-    color: white;
+    background-color: 
+    #dae0e6;
+    color: rgb(0, 0, 0);
     text-align: center;
     padding: 15px;
 }
 textarea {
     resize: none;
-    background-color: #2f3031;
+    background-color: #dae0e6;
     border: #313131;
     color: #dfdfdf;
 }
@@ -111,7 +112,7 @@ footer{
     position: fixed;
     bottom: 0;
     left: 0;
-    background-color: #161616;
+    background-color: #dae0e6;
     padding-top: 20px;
     padding-bottom: 20px;
     padding-right: 20px;
@@ -158,14 +159,14 @@ margin-top: -13px;
     text-align: center;
     padding: 5px 10px;
     color: #fff;
-    background-color: #1ED760;
+    background-color: #0079d3;
     height: 31px;
 
 }
 
 .sendButton:hover{
     transform: scale(1.04);
-    background-color: #21e065;
+    background-color:#0079d3;
 }
 
 .div_post{
@@ -173,8 +174,9 @@ margin-top: -13px;
     padding: 5px;
     margin: 10px;
     flex-direction: column;
-    background-color: #2f3031;
-    color: white;
+    background-color:#dae0e6;
+    color: black;
+    font-weight: bold;
 }
 
 .div_TextAndImage{
@@ -193,13 +195,13 @@ button{
     margin: 2px;
     background-color: transparent;
     cursor: pointer;
-    color: white;
+    color: black;
     font-family: 'Roboto Mono', monospace;
     font-weight: bold;
 }
 
 button:hover{
-    color: rgb(255, 0, 0);
+    color: blue;
 }
 
 p{
@@ -229,7 +231,7 @@ p{
     /* margin-right: 25px; */
     padding: 5px;
     box-shadow: black;
-    background-color: #544f4f;
+    background-color: white;
     transition: .6s;
     animation: append-animate .3s linear;
 }
@@ -247,15 +249,17 @@ p{
     padding-right: 25px;
     padding-top: 5px;
     cursor: pointer;
+    background-color: white;
+    border: grey 1px solid;
 }
 
 #postText2::placeholder{
-    color: rgba(255, 255, 255, 0.575);
+    color: black;
 }
 
 #postReply{
     border-radius: 50px;
-    background-color: #544f4f;
+    background-color: white;
     padding-left: 8px;
     cursor: pointer;
     padding-left: 20px;
@@ -265,7 +269,7 @@ p{
 }
 
 #postReply::placeholder{
-    color: rgba(255, 255, 255, 0.575);
+    color: black;
 }
 
 /* ############Random gif added color############# */
@@ -376,7 +380,7 @@ p{
     width: 98%;
     height: 30px;
     border-radius: 50px;
-    background-color: #2f3031;
+    background-color: white;
     padding-left: 8px;
     cursor: pointer;
     color: white;
@@ -385,7 +389,7 @@ p{
 }
 
 #gifInput::placeholder{
-    color: rgba(255, 255, 255, 0.575);
+    color:black;
 }
 
 #addGif{
@@ -394,11 +398,24 @@ p{
     
 }
 
-.icon:hover{
-    color: yellow;
-    cursor: pointer;
+.icon{
+    font-size: 2rem;
 }
 
-.sun{
-    font-size: 2rem;
+#sunIcon{
+  display: none;
+}
+
+#sun:hover{
+  color: yellow;
+  cursor: pointer;
+}
+
+#moonIcon:hover{
+  color: white;
+  cursor: pointer;
+  background-color: #22576a;    
+   transition: background-color .7s linear;
+   border-radius: 100%;
+   padding: 8px;
 }
