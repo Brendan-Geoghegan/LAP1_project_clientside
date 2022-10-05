@@ -75,6 +75,10 @@ html, body{
     height: 100%;
 }
 
+main{
+    padding: 0.5em;
+}
+
 header{
     background-color: #161616;
     color: white;
@@ -82,7 +86,11 @@ header{
     padding: 15px;
 }
 textarea {
-    resize: none;}
+    resize: none;
+    background-color: #544f4f;
+    border: #313131;
+    color: white;
+}
 
 #gifNotification{
     display: none;
@@ -90,14 +98,81 @@ textarea {
 }
 
 footer{
-    position: fixed;
+    display: inline-block;
     bottom: 0;
+    left: 0;
     background-color: #161616;
     padding: 20px;
+    width: 100%;
+    text-align: center;
 }
 
 .form{
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
 
+#gifInput{
+    width: 50%;
+    height: 30px;
+}
+
+#sendPost{
+    position: relative;
+    right: 50px;
+    bottom: 10px;
+}
+
+/* #submit_form, #gif_Form{
+    width: 80%;
+} */
+
+.sendButton{
+    text-align: center;
+    cursor: pointer;
+    margin: 1px auto;
+    border: 0;
+    border-radius: 6px ;
+    padding: 0.5em;
+    background-color: rgb(90, 235, 235);
+}
+
+#gifNotification{
+    color: white;
+}
+
+.div_post{
+    display: flex;
+    padding: 5px;
+    margin: 5px;
+    border: #161616 solid;
+    flex-direction: column;
+}
+
+.div_TextAndImage{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.div_TextAndImage img{
+    justify-content: flex-end;
+}
+
+button{
+    border: none;
+    padding: 5px;
+    margin: 2px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+button:hover{
+    border: #161616 1px solid;
+}
+
+p{
+    font-family: sans-serif;
 }

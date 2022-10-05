@@ -32,16 +32,14 @@
 
                 <!-- <input type="text" id="postText"> -->
 
-                <textarea id="postText2" name="postText2" rows="5" cols="60" required></textarea>
+                <textarea id="postText2" name="postText2" rows="5" cols="60" required placeholder="Submit a post..."></textarea>
 
-                <button id="addGif">Add Gif</button>
-
-                <input type="submit" value="Send">
+                <input class="sendButton" type="submit" value="Send" id="sendPost">
             </form>
 
             <form id="gif_form">
                 <input id="gifInput" type="text" placeholder="Search Giphy...">
-                <input type="submit" value="Add Random Gif" id="addGif">
+                <input class="sendButton" type="submit" value="Add Random Gif" id="addGif">
             </form>
 
             <p id="gifNotification">Random Gif Added!</p>

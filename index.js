@@ -68,20 +68,28 @@ async function fetchData(){
         div.setAttribute("id", i.id)
         section.appendChild(div)
         
+        let divTextAndImage = document.createElement('div')
+        divTextAndImage.className = "div_TextAndImage"
+        div.appendChild(divTextAndImage)
+
         let p = document.createElement('p')
         p.className = "p_entry"
         p.textContent = i.entry
-        div.appendChild(p);
+        divTextAndImage.appendChild(p);
         
         let img = document.createElement('img')
         img.src = i.gif
         img.style.width = "10em"
-        div.appendChild(img)
+        divTextAndImage.appendChild(img)
+
+        let divButtons = document.createElement('div')
+        divButtons.className = 'div_Buttons'
+        div.appendChild(divButtons)
 
         let reaction_smile = document.createElement('button')
         // reaction_smile.id = `smile${i.id}`
         reaction_smile.setAttribute("id", `smile${i.id}`)
-        reaction_smile.textContent = `Smile: ${i.reactions.smiley}`
+        reaction_smile.textContent = `😀 ${i.reactions.smiley}`
         reaction_smile.addEventListener('click', async () => {
             console.log(`http://localhost:3000/entries/${i.id}/reaction`)
             await fetch(`http://localhost:3000/entries/${i.id}/reaction`, {
@@ -96,11 +104,11 @@ async function fetchData(){
             window.location.href=window.location.href
             // Page.MaintainScrollPositionOnPostBack = True
         })
-        div.appendChild(reaction_smile)
+        divButtons.appendChild(reaction_smile)
 
         let reaction_sad = document.createElement('button')
         reaction_sad.id = `sad${i.id}`
-        reaction_sad.textContent = `Sad: ${i.reactions.sad}`
+        reaction_sad.textContent = `😢 ${i.reactions.sad}`
         reaction_sad.addEventListener('click', async () => {
             console.log(`http://localhost:3000/entries/${i.id}/reaction`)
             await fetch(`http://localhost:3000/entries/${i.id}/reaction`, {
@@ -114,11 +122,11 @@ async function fetchData(){
             })
             window.location.href=window.location.href
         })
-        div.appendChild(reaction_sad)
+        divButtons.appendChild(reaction_sad)
 
         let reaction_like = document.createElement('button')
         reaction_like.id = `like${i.id}`
-        reaction_like.textContent = `like: ${i.reactions.like}`
+        reaction_like.textContent = `👍 ${i.reactions.like}`
         reaction_like.addEventListener('click', async () => {
             console.log(`http://localhost:3000/entries/${i.id}/reaction`)
             await fetch(`http://localhost:3000/entries/${i.id}/reaction`, {
@@ -132,7 +140,7 @@ async function fetchData(){
             })
             window.location.href=window.location.href
         })
-        div.appendChild(reaction_like)
+        divButtons.appendChild(reaction_like)
 
         // ############################ REVEAL REPLIES ########################################
 
@@ -186,7 +194,7 @@ async function fetchData(){
             commentForm.append(commentForm_submit)
 
         })
-        div.append(revealButton)
+        divButtons.append(revealButton)
 
     });
 }
