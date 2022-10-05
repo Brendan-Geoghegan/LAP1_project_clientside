@@ -9,6 +9,7 @@ let object = {
     gif: ""
 };
 
+
 const gifForm = document.getElementById('gif_form')
 const gifNotif = document.getElementById('gifNotification')
 gifForm.addEventListener('submit', async (e) =>{
@@ -156,13 +157,16 @@ async function fetchData(){
             const commentsJSON = await comments.json();
             console.log("commentsJSON", commentsJSON);
             console.log("commentsJSON.comments", commentsJSON[0].comments)
+            let commentBox = document.createElement('div')
+                commentBox.className = "commentBox"
+                div.append(commentBox)
+                
             commentsJSON[0].comments.forEach(comment => {
                 console.log(comment)
-                
                 let p = document.createElement('p')
                 p.className= "comment"
                 p.textContent = comment
-                div.append(p)
+                commentBox.append(p)
             })
             revealButton.style.display = "none"
 
