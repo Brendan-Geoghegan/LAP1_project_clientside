@@ -240,6 +240,10 @@ form.addEventListener('submit', async (e) => {
     const newEntriesData = await newEntriesRawData.json();
     const newEntry = newEntriesData[newEntriesData.length - 1];
     oneEntry(newEntry);
+    gifNotif.style.display = "none"
+    gifForm.style.display = "flex"
+    const gifSearch = document.getElementById("gifInput")
+    gifSearch.value = "";
     // section.innerHTML = "";
     // fetchData();
     // scrollTo({
