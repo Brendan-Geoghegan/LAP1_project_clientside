@@ -1,3 +1,5 @@
+// const { moduleExpression } = require("@babel/types");
+
 const httpLink = "http://localhost:3000/entries/"
 
 let object = {
@@ -37,7 +39,6 @@ gifForm.addEventListener('submit', async (e) =>{
         e.target.gifInput.value = "";
     }
 })
-
 
 // Initialise main page to display entries
 
@@ -103,7 +104,11 @@ const oneEntry = (i)  => {
                 "Content-type": "application/json; charset=UTF-8"
                 }
             })
-            window.location.href=window.location.href
+            const rawSadData = await fetch(`${httpLink}count/${i.id}/sad`);
+            const sadData = await rawSadData.json();
+            console.log(sadData);
+            reaction_sad.textContent = `😢 ${sadData}`;
+            // window.location.href=window.location.href
         })
         divButtons.appendChild(reaction_sad)
 
@@ -121,7 +126,11 @@ const oneEntry = (i)  => {
                 "Content-type": "application/json; charset=UTF-8"
                 }
             })
-            window.location.href=window.location.href
+            const rawLikeData = await fetch(`${httpLink}count/${i.id}/like`);
+            const likeData = await rawLikeData.json();
+            console.log(likeData);
+            reaction_like.textContent = `👍 ${likeData}`;
+            // window.location.href=window.location.href
         })
         divButtons.appendChild(reaction_like)
 
@@ -267,14 +276,23 @@ let sunIcon = document.getElementById('sunIcon')
 let styleLink =  document.getElementById('styleLink')
 let moonIcon = document.getElementById('moonIcon')
 
-sunIcon.addEventListener('click', () =>{
-    console.log('I am working')
-    styleLink.setAttribute('href', "style_light.css")
-})
+// sunIcon.addEventListener('click', () =>{
+//     styleLink.setAttribute('href', "style_light.css")
+// })
 
-moonIcon.addEventListener('click', () =>{
-    console.log('I am working')
+sunIcon.addEventListener('click', changeToLightMode)
+
+function changeToLightMode() {
+    styleLink.setAttribute('href', "style_light.css")
+}
+
+moonIcon.addEventListener('click', () => {
     styleLink.setAttribute('href', "style_dark.css")
 })
 
+function refresh(){
+    window.location.href=window.location.href
+}
+
+module.exports = changeToLightMode
 
