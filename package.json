@@ -1,0 +1,24 @@
+{
+  "name": "lap1_project_clientside",
+  "version": "1.0.0",
+  "description": "Project for LAP1 by Team Name 404",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brendan-Geoghegan/LAP1_project_clientside.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Brendan-Geoghegan/LAP1_project_clientside/issues"
+  },
+  "homepage": "https://github.com/Brendan-Geoghegan/LAP1_project_clientside#readme",
+  "devDependencies": {
+    "coverage": "^0.4.1",
+    "jest": "^29.1.2",
+    "supertest": "^6.3.0"
+  }
+}

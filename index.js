@@ -1,3 +1,5 @@
+const { moduleExpression } = require("@babel/types");
+
 const httpLink = "http://localhost:3000/entries/"
 
 let object = {
@@ -35,14 +37,11 @@ const form = document.getElementById('submit_form')
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault()
-    // const postText = document.getElementById('postText').value
     console.log("postText test", e.target.postText2)
     
     const postGif = document.getElementById('addGif')
 
     object.entry = e.target.postText2.value,
-    
-
 
     await fetch(`${httpLink}`, {
         method: "POST",
@@ -57,17 +56,6 @@ form.addEventListener('submit', async (e) => {
     e.target.postText2.value = "";
     section.innerHTML = "";
     fetchData();
-    // scrollTo({
-    //     "scroll-height": 10000000000000,
-    //     behavior: "smooth"
-    // })
-    // const scrollToBottom = () => {
-    //     const element = document.querySelector("body");
-    //     element.scrollBottom = element.scrollHeight;
-    // }
-    // scrollToBottom();
-    
-    // scrollTo(0, document.html.scrollHeight);
 })
 
 const section = document.getElementById('entries')
@@ -256,64 +244,20 @@ async function fetchData(){
 
 fetchData()
 
-// .then(() => {
-//     const smileButton = document.querySelectorAll('.div_post')
-//     console.log("testing smile button", smileButton)
-
-//     smileButton.addEventListener('click', () => {
-//     console.log('testing smile')}
-// )
-// })
-
-
-
-// smileButton.addEventListener('click', () => {
-
-//     console.log('testing smile')
-
-//     fetch(`${httpLink}1`, {
-//         method: "PATCH",
-
-//         body: JSON.stringify(
-//             {reactions: smiley}
-//         ),
-
-//         headers: {
-//             "Content-type": "application/json; charset=UTF-8"
-//         }
-//     })
-// })
-
-
-// const functionIncrement = async () => {
-//     console.log('testing increment')
-//     fetch(`https://team-name404.herokuapp.com/entries`, {
-//         method: "PATCH",
-
-//         body: JSON.stringify(
-//             {reactions: smiley}
-//         ),
-
-//         headers: {
-//             "Content-type": "application/json; charset=UTF-8"
-//         }
-//     })
-// }
-
 let sunIcon = document.getElementById('sunIcon')
 let styleLink =  document.getElementById('styleLink')
 let moonIcon = document.getElementById('moonIcon')
 
 sunIcon.addEventListener('click', () =>{
-    console.log('I am working')
     styleLink.setAttribute('href', "style_light.css")
 })
 
-moonIcon.addEventListener('click', () =>{
-    console.log('I am working')
+moonIcon.addEventListener('click', () => {
     styleLink.setAttribute('href', "style_dark.css")
 })
 
 function refresh(){
     window.location.href=window.location.href
 }
+
+module.exports = fetchData
