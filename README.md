@@ -1,5 +1,7 @@
 # Team_Name_404_Clientside
-Project for LAP1 by Team Name 404
+Project for LAP1 by Team Name 404 - clientside repo
+
+![Project logo](./gifs/team_name_404.gif "Project Logo")
 
 Our Webpage:
 ![Team_Name_404](./images/full_page.gif "Team Name 404")
@@ -51,3 +53,4 @@ Our Webpage:
 * Front End - https://github.com/Brendan-Geoghegan/LAP_1_PortfolioProject
 * Back End - https://github.com/Brendan-Geoghegan/LAP1_project_clientside
 * Heroku Backend - https://team-name404.herokuapp.com
+* Netlify deploy - https://team-name-404.netlify.app/
