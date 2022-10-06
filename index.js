@@ -313,3 +313,7 @@ moonIcon.addEventListener('click', () =>{
     console.log('I am working')
     styleLink.setAttribute('href', "style_dark.css")
 })
+
+function refresh(){
+    window.location.href=window.location.href
+}
