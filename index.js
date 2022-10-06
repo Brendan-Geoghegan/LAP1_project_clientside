@@ -195,7 +195,7 @@ const oneEntry = (i)  => {
             commentForm_input.name = "postReply"
             commentForm_input.rows = "4"
             commentForm_input.cols = "40"
-            commentForm_input.maxLength = "40"
+            commentForm_input.maxLength = "200"
             commentForm_input.required = true;
             commentForm_input.placeholder = "  Submit a comment here..."
             commentForm.append(commentForm_input)

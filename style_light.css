@@ -185,6 +185,7 @@ margin-top: -13px;
     background-color:#dae0e6;
     color: black;
     font-weight: bold;
+    word-break: break-all;
 }
 
 .div_TextAndImage{
