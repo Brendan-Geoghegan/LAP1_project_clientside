@@ -139,7 +139,11 @@ async function fetchData(){
                 "Content-type": "application/json; charset=UTF-8"
                 }
             })
-            window.location.href=window.location.href
+            const rawSadData = await fetch(`${httpLink}count/${i.id}/sad`);
+            const sadData = await rawSadData.json();
+            console.log(sadData);
+            reaction_sad.textContent = `😢 ${sadData}`;
+            // window.location.href=window.location.href
         })
         divButtons.appendChild(reaction_sad)
 
@@ -157,7 +161,11 @@ async function fetchData(){
                 "Content-type": "application/json; charset=UTF-8"
                 }
             })
-            window.location.href=window.location.href
+            const rawLikeData = await fetch(`${httpLink}count/${i.id}/like`);
+            const likeData = await rawLikeData.json();
+            console.log(likeData);
+            reaction_like.textContent = `👍 ${likeData}`;
+            // window.location.href=window.location.href
         })
         divButtons.appendChild(reaction_like)
 
