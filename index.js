@@ -33,6 +33,7 @@ gifForm.addEventListener('submit', async (e) =>{
 
         gifForm.style.display = "none"
         gifNotif.style.display = "block" 
+        e.target.gifInput.value = "";
     } catch (err) {
         console.log(err);
         window.alert("Please use a valid name to search for gifs");
@@ -244,6 +245,7 @@ form.addEventListener('submit', async (e) => {
     gifForm.style.display = "flex"
     const gifSearch = document.getElementById("gifInput")
     gifSearch.value = "";
+    object.gif = "";
     // section.innerHTML = "";
     // fetchData();
     // scrollTo({
