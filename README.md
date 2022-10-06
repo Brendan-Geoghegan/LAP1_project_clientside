@@ -2,7 +2,8 @@
 Project for LAP1 by Team Name 404
 
 Our Webpage:
-![Team_Name_404](./images/webpageGif.gif "Team Name 404")
+![Team_Name_404](./images/full_page.gif "Team Name 404")
+
 ## Installation and Usage
 ### Installation
 1. Clone or fork repo.
