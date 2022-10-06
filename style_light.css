@@ -427,3 +427,8 @@ p{
    border-radius: 100%;
    padding: 8px;
 }
+
+@media only screen and (max-width: 660px){
+  .stack span {
+  font-size: 2rem;
+}
