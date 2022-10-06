@@ -1,4 +1,4 @@
-const { moduleExpression } = require("@babel/types");
+// const { moduleExpression } = require("@babel/types");
 
 const httpLink = "http://localhost:3000/entries/"
 
@@ -248,13 +248,19 @@ let sunIcon = document.getElementById('sunIcon')
 let styleLink =  document.getElementById('styleLink')
 let moonIcon = document.getElementById('moonIcon')
 
-sunIcon.addEventListener('click', () =>{
+// sunIcon.addEventListener('click', () =>{
+//     styleLink.setAttribute('href', "style_light.css")
+// })
+
+sunIcon.addEventListener('click', changeToLightMode)
+
+function changeToLightMode() {
     styleLink.setAttribute('href', "style_light.css")
-})
+}
 
 moonIcon.addEventListener('click', () => {
     styleLink.setAttribute('href', "style_dark.css")
 })
 
 
-module.exports = fetchData
+module.exports = changeToLightMode
