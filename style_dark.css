@@ -14,6 +14,10 @@
     font-family: 'Silkscreen', cursive;
   }
   
+  .stack{
+    cursor: pointer;
+  }
+
   .right {
     text-align: right;
     width: 100%;
