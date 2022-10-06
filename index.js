@@ -12,77 +12,41 @@ let object = {
 };
 
 
+
+
 const gifForm = document.getElementById('gif_form')
 const gifNotif = document.getElementById('gifNotification')
 gifForm.addEventListener('submit', async (e) =>{
-    e.preventDefault()
-    console.log('gif input test')
-    console.log(e.target.gifInput.value)
-    const gifResult = e.target.gifInput.value
-    const gifData = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=0S3uHG2JHXGiL6ooiPgmsyrS25ufBlGf&q=${gifResult}&limit=20&offset=0&rating=g&lang=en`)
-    const gifJson = await gifData.json();
-    console.log(gifJson)
-    
+    try{
+        e.preventDefault()
+        console.log('gif input test')
+        console.log(e.target.gifInput.value)
+        const gifResult = e.target.gifInput.value
+        const gifData = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=0S3uHG2JHXGiL6ooiPgmsyrS25ufBlGf&q=${gifResult}&limit=20&offset=0&rating=g&lang=en`)
+        const gifJson = await gifData.json();
+        console.log(gifJson)
+        
 
-    object.gif = gifJson.data[(Math.floor(Math.random()*20))].images.original.url
+        object.gif = gifJson.data[(Math.floor(Math.random()*20))].images.original.url
 
-    gifForm.style.display = "none"
-    gifNotif.style.display = "block"
-
+        gifForm.style.display = "none"
+        gifNotif.style.display = "block" 
+    } catch (err) {
+        console.log(err);
+        window.alert("Please use a valid name to search for gifs");
+        e.target.gifInput.value = "";
+    }
 })
 
-const form = document.getElementById('submit_form')
 
-form.addEventListener('submit', async (e) => {
-    e.preventDefault()
-    // const postText = document.getElementById('postText').value
-    console.log("postText test", e.target.postText2)
-    
-    const postGif = document.getElementById('addGif')
+// Initialise main page to display entries
 
-    object.entry = e.target.postText2.value,
-    
-
-
-    await fetch(`${httpLink}`, {
-        method: "POST",
-
-        body: JSON.stringify(object),
-
-        headers: {
-            "Content-type": "application/json; charset=UTF-8"
-        }
-    })
-
-    e.target.postText2.value = "";
-    section.innerHTML = "";
-    fetchData();
-    // scrollTo({
-    //     "scroll-height": 10000000000000,
-    //     behavior: "smooth"
-    // })
-    // const scrollToBottom = () => {
-    //     const element = document.querySelector("body");
-    //     element.scrollBottom = element.scrollHeight;
-    // }
-    // scrollToBottom();
-    
-    // scrollTo(0, document.html.scrollHeight);
-})
-
-const section = document.getElementById('entries')
-console.log(section)
-
-async function fetchData(){
-    const rawData = await fetch(`${httpLink}`)
-    const commentData = await rawData.json()
-    console.log(commentData, "from fetch data function")
-
-    commentData.forEach((i) => {
-        let div = document.createElement('div')
+const oneEntry = (i)  => {
+    let div = document.createElement('div')
         div.className = 'div_post'
         div.setAttribute("id", i.id)
-        section.appendChild(div)
+        // section.appendChild(div)
+        section.insertBefore(div, section.children[0])
         
         let divTextAndImage = document.createElement('div')
         divTextAndImage.className = "div_TextAndImage"
@@ -188,8 +152,6 @@ async function fetchData(){
             })
             revealButton.style.display = "none"
 
-            // let reply = document.createElement('button')
-            // reply.textContent= `Reply`
 
             let commentForm = document.createElement('form')
             commentForm.className = "commentForm"
@@ -229,11 +191,6 @@ async function fetchData(){
             commentForm_input.placeholder = "  Submit a comment here..."
             commentForm.append(commentForm_input)
 
-            // let commentForm_input = document.createElement('input')
-            // commentForm_input.type = "text"
-            // commentForm_input.id = "postReply"
-            // commentForm.append(commentForm_input)
-
             let commentForm_submit = document.createElement('input')
             commentForm_submit.type = "submit"
             commentForm_submit.className = "sendButton"
@@ -242,55 +199,69 @@ async function fetchData(){
 
         })
         divButtons.append(revealButton)
+}
 
+
+const form = document.getElementById('submit_form')
+
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    // const postText = document.getElementById('postText').value
+    console.log("postText test", e.target.postText2)
+    
+    const postGif = document.getElementById('addGif')
+
+    object.entry = e.target.postText2.value,
+    
+
+
+    await fetch(`${httpLink}`, {
+        method: "POST",
+
+        body: JSON.stringify(object),
+
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+
+    e.target.postText2.value = "";
+    const newEntriesRawData = await fetch(`${httpLink}`);
+    const newEntriesData = await newEntriesRawData.json();
+    const newEntry = newEntriesData[newEntriesData.length - 1];
+    oneEntry(newEntry);
+    // section.innerHTML = "";
+    // fetchData();
+    // scrollTo({
+    //     "scroll-height": 10000000000000,
+    //     behavior: "smooth"
+    // })
+    // const scrollToBottom = () => {
+    //     const element = document.querySelector("body");
+    //     element.scrollBottom = element.scrollHeight;
+    // }
+    // scrollToBottom();
+    
+    // scrollTo(0, document.html.scrollHeight);
+})
+
+const section = document.getElementById('entries')
+console.log(section)
+
+async function fetchData(){
+    const rawData = await fetch(`${httpLink}`)
+    const commentData = await rawData.json()
+    console.log(commentData, "from fetch data function")
+    // const reverseData = commentData.reverse();
+    // console.log(reverseData);
+
+    commentData.forEach((i) => {
+        oneEntry(i);
     });
 }
 
 fetchData()
-
-// .then(() => {
-//     const smileButton = document.querySelectorAll('.div_post')
-//     console.log("testing smile button", smileButton)
-
-//     smileButton.addEventListener('click', () => {
-//     console.log('testing smile')}
-// )
-// })
-
-
-
-// smileButton.addEventListener('click', () => {
-
-//     console.log('testing smile')
-
-//     fetch(`${httpLink}1`, {
-//         method: "PATCH",
-
-//         body: JSON.stringify(
-//             {reactions: smiley}
-//         ),
-
-//         headers: {
-//             "Content-type": "application/json; charset=UTF-8"
-//         }
-//     })
-// })
-
-
-// const functionIncrement = async () => {
-//     console.log('testing increment')
-//     fetch(`https://team-name404.herokuapp.com/entries`, {
-//         method: "PATCH",
-
-//         body: JSON.stringify(
-//             {reactions: smiley}
-//         ),
-
-//         headers: {
-//             "Content-type": "application/json; charset=UTF-8"
-//         }
-//     })
-// }
 
 let sunIcon = document.getElementById('sunIcon')
 let styleLink =  document.getElementById('styleLink')
@@ -305,3 +276,5 @@ moonIcon.addEventListener('click', () =>{
     console.log('I am working')
     styleLink.setAttribute('href', "style_dark.css")
 })
+
+
