@@ -42,7 +42,7 @@ Our Webpage:
 - Ability to delete comments.
 - Ability to close comment bar after clicking "show comments".
 - Ability to search for particular gifs instead of random gifs.
-- When new entries are added the pge will scroll to those entries. 
+- When new entries are added the page will scroll to those entries. 
 ## Licence
 - Giphy Developers API - https://developers.giphy.com/
 
