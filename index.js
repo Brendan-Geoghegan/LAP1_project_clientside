@@ -1,6 +1,6 @@
 // const { moduleExpression } = require("@babel/types");
 
-const httpLink = "http://localhost:3000/entries/"
+const httpLink = "https://team-name404.herokuapp.com/entries/"
 
 let object = {
     entry: "",
